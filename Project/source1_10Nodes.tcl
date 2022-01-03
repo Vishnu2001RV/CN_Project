@@ -4,23 +4,18 @@
 set val(nn)     10                         ;# number of mobilenodes
 set val(x)      2453                       ;# X dimension of topography
 set val(y)      1939                       ;# Y dimension of topography
-
 #Create a ns simulator
 set ns [new Simulator]
-
 #Setup topography object
 set topo       [new Topography]
 $topo load_flatgrid $val(x) $val(y)
 create-god $val(nn)
-
 #Open the NS trace file
 $ns trace-all $tracefile
-
 #Open the NAM trace file
 $ns namtrace-all $namfile
 $ns namtrace-all-wireless $namfile $val(x) $val(y)
 set chan [new $val(chan)];#Create wireless channel
-
 #===================================
 #     Mobile node parameter setup
 #===================================
@@ -93,7 +88,6 @@ $n9 set X_ 1836
 $n9 set Y_ 1892
 $n9 set Z_ 0.0
 $ns initial_node_pos $n9 20
-
 #===================================
 #        Generate movement          
 #===================================
@@ -110,11 +104,9 @@ $ns at 1.0 " $n5 setdest 1625 1789 10 "
 $ns at 14 " $n5 setdest 1733 1808 10 " 
 $ns at 28 " $n5 setdest 1625 1789 10 " 
 $ns at 42 " $n5 setdest 1733 1808 10 "
-
 #===================================
 #        Agents Definition        
 #===================================
-
 #Setup a TCP connection
 if {$tcpAgent == 1} {
     set tcp0 [new Agent/TCP]
@@ -127,13 +119,16 @@ if {$tcpAgent == 1} {
 } elseif {$tcpAgent ==5} {
     set tcp0 [new Agent/TCP/Vegas]
 }
-
+$tcp0 attach $tracefile
+$tcp0 tracevar cwnd_
+$tcp0 tracevar ssthresh_
+$tcp0 tracevar ack_
+$tcp0 tracevar maxseq_
 $ns attach-agent $n0 $tcp0
 set sink1 [new Agent/TCPSink]
 $ns attach-agent $n9 $sink1
 $ns connect $tcp0 $sink1
 $tcp0 set packetSize_ 2500
-
 #===================================
 #        Applications Definition        
 #===================================

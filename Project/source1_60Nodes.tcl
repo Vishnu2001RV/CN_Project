@@ -68,7 +68,11 @@ if {$tcpAgent == 1} {
 } elseif {$tcpAgent ==5} {
     set tcp0 [new Agent/TCP/Vegas]
 }
-
+$tcp0 attach $tracefile
+$tcp0 tracevar cwnd_
+$tcp0 tracevar ssthresh_
+$tcp0 tracevar ack_
+$tcp0 tracevar maxseq_
 $ns attach-agent $n0 $tcp0
 set sink1 [new Agent/TCPSink]
 $ns attach-agent $n59 $sink1

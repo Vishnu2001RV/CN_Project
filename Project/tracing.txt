@@ -1,0 +1,44 @@
+set title "Congestion Controll Window"
+set xlabel "Time Interval(s)"
+set ylabel "CWND"
+set style line 1 lc rgb "red" lw 1.5 ps 0.1
+set style line 2 lt rgb "orange" lw 1.5 ps 0.1
+set style line 3 lt rgb "yellow" lw 1.5 ps 0.1
+set style line 4 lt rgb "green" lw 1.5 ps 0.1
+set style line 5 lt rgb "cyan" lw 1.5 ps 0.1
+plot "TCP_AODV_cwnd.tr" with linespoints ls 1 title 'TCPAODV',\
+     "TCPTahoe_AODV_cwnd.tr" with linespoints ls 2 title 'TCPTahoeAODV',\
+     "TCPReno_AODV_cwnd.tr" with linespoints ls 3 title 'TCPRenoAODV',\
+     "TCPNewReno_AODV_cwnd.tr" with linespoints ls 4 title 'TCPNewRenoAODV',\
+     "TCPVegas_AODV_cwnd.tr" with linespoints ls 5 title 'TCPVegasAODV'
+
+
+set title "Congestion Controll Window"
+set xlabel "Time Interval(s)"
+set ylabel "CWND"
+set style line 1 lc rgb "red" lw 1.5 ps 0.1
+set style line 2 lt rgb "orange" lw 1.5 ps 0.1
+set style line 3 lt rgb "yellow" lw 1.5 ps 0.1
+set style line 4 lt rgb "green" lw 1.5 ps 0.1
+set style line 5 lt rgb "cyan" lw 1.5 ps 0.1
+plot "TCP_DSDV_cwnd.tr" with linespoints ls 1 title 'TCPDSDV',\
+     "TCPTahoe_DSDV_cwnd.tr" with linespoints ls 2 title 'TCPTahoeDSDV',\
+     "TCPReno_DSDV_cwnd.tr" with linespoints ls 3 title 'TCPRenoDSDV',\
+     "TCPNewReno_DSDV_cwnd.tr" with linespoints ls 4 title 'TCPNewRenoDSDV',\
+     "TCPVegas_DSDV_cwnd.tr" with linespoints ls 5 title 'TCPVegasDSDV'
+
+
+
+set title "Congestion Controll Window"
+set xlabel "Time Interval(s)"
+set ylabel "CWND"
+set style line 1 lc rgb "red" lw 1.5 ps 0.1
+set style line 2 lt rgb "orange" lw 1.5 ps 0.1
+set style line 3 lt rgb "yellow" lw 1.5 ps 0.1
+set style line 4 lt rgb "green" lw 1.5 ps 0.1
+set style line 5 lt rgb "cyan" lw 1.5 ps 0.1
+plot "TCP_DSR_cwnd.tr" with linespoints ls 1 title 'TCPDSR',\
+     "TCPTahoe_DSR_cwnd.tr" with linespoints ls 2 title 'TCPTahoeDSR',\
+     "TCPReno_DSR_cwnd.tr" with linespoints ls 3 title 'TCPRenoDSR',\
+     "TCPNewReno_DSR_cwnd.tr" with linespoints ls 4 title 'TCPNewRenoDSR',\
+     "TCPVegas_DSR_cwnd.tr" with linespoints ls 5 title 'TCPVegasDSR'
